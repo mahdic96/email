@@ -8,7 +8,12 @@ $json = json_decode($requestBody);
 $email = $json->queryResult->parameters->userEmail;
 $name = $json->queryResult->parameters->userName;
 $m = $json->queryResult->parameters->userMessage;
-
+$action = $json->queryResult->action;
+$session = $json -> session;
+$text =$json->queryResut->queryText;	
+if (strcmp($action,"log")==0){
+	$speech = $json->queryResult->fulfillmentText;}
+if (strcmp($action,"sendEmail") == 0){
 require("class.phpmailer.php");
 require("class.smtp.php");
 
@@ -24,7 +29,7 @@ try {
   $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
   $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
   $mail->Username   = "rizonn707@gmail.com";  // GMAIL username
-  $mail->Password   = "rizon96";            // GMAIL password
+  $mail->Password   = "hunter96@";            // GMAIL password
   //$mail->AddReplyTo('name@yourdomain.com', 'First Last');
   $mail->AddAddress('mahdicherham7@gmail.com');
   $mail->SetFrom($email, 'Codendot-Chatbot');
@@ -44,10 +49,10 @@ try {
 	$speech = "Error,  I could not send your message.";
 }
 }
-else {
-	$speech = "Error, I could not send your message.";
-}
 	$response = new \stdClass();
 	$response->fulfillmentText = $speech;
 	echo json_encode($response);
+	$log = "User: " . $text ."\nChatbot: ".$speech;
+	file_put_contents($session."txt",$log,FILE_APPEND);
+}
 ?>
