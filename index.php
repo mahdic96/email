@@ -126,6 +126,11 @@ else {
 	$response->fulfillmentText = $speech;
 	echo json_encode($response);
 }
+	else {
+		$response = new \stdClass();
+	$response->fulfillmentText = "error";
+	echo json_encode($response);
+	}
 }
 
 ?>
