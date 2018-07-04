@@ -5,7 +5,11 @@ if($method == 'POST'){
 $requestBody = File_get_contents("php://input");
 $json = json_decode($requestBody);
 $action = $json->queryResult->action;
-
+	$response = new \stdClass();
+	$response->fulfillmentText =$action;
+	echo json_encode($response);
+	
+	/*
 if($action== "sendEmail"){
 
 $email = $json->queryResult->parameters->userEmail;
@@ -132,5 +136,5 @@ else {
 	echo json_encode($response);
 	}
 }
-
+*/
 ?>
