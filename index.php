@@ -30,7 +30,7 @@ try {
   $mail->Username   = "cndchatbot@gmail.com";  // GMAIL username
   $mail->Password   = "Cnd*123654";            // GMAIL password
 
-  $mail->AddAddress('info@codendot.com');
+  $mail->AddAddress('mahdicherham7@gmail.com');
   $mail->SetFrom($email, 'Codendot-Chatbot');
   //$mail->AddReplyTo('name@yourdomain.com', 'Fi Last');
   $mail->Subject = 'Automated Codendot-Chatbot Email';
