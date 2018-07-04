@@ -128,7 +128,7 @@ else {
 }
 	else {
 	$response = new \stdClass();
-	$response->fulfillmentText = "error";
+	$response->fulfillmentText =$action;
 	echo json_encode($response);
 	}
 }
