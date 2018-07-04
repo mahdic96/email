@@ -8,7 +8,7 @@ $action = $json->queryResult->action;
 	$response = new \stdClass();
 	$response->fulfillmentText =$action;
 	echo json_encode($response);
-	
+}	
 	/*
 if($action== "sendEmail"){
 
