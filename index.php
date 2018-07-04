@@ -6,7 +6,7 @@ $requestBody = File_get_contents("php://input");
 $json = json_decode($requestBody);
 $action = $json->queryResult->action;
 
-if(strcmp($action, 'sendEmail') == 0){
+if(strcmp($action, "sendEmail") == 0){
 
 $email = $json->queryResult->parameters->userEmail;
 $name = $json->queryResult->parameters->userName;
