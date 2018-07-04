@@ -6,7 +6,7 @@ $requestBody = File_get_contents("php://input");
 $json = json_decode($requestBody);
 $action = $json->queryResult->action;
 
-if(strcmp($action, "sendEmail") == 0){
+if($action== "sendEmail"){
 
 $email = $json->queryResult->parameters->userEmail;
 $name = $json->queryResult->parameters->userName;
@@ -77,7 +77,7 @@ else {
 	echo json_encode($response);
 }
 
-elseif (strcmp($action, 'callme') == 0) {
+elseif ($action== 'callme') {
 	$number = $json->queryResult->parameters->phoneNumber;
 	$m = $json->queryResult->parameters->services;
 	$name = $json->queryResult->parameters->name;
@@ -127,7 +127,7 @@ else {
 	echo json_encode($response);
 }
 	else {
-		$response = new \stdClass();
+	$response = new \stdClass();
 	$response->fulfillmentText = "error";
 	echo json_encode($response);
 	}
