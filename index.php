@@ -66,9 +66,9 @@ try {
 
  
 } catch (phpmailerException $e) {
-	$speech = "Error, I could not send your message.";
+	$speech = "Error, I could not send your message1.";
 } catch (Exception $e) {
-	$speech = "Error,  I could not send your message.";
+	$speech = "Error,  I could not send your message2.";
 }
 $response = new \stdClass();
 	$response->fulfillmentText = $speech;
@@ -111,9 +111,9 @@ try {
 
  
 } catch (phpmailerException $e) {
-	$speech = "Error, I could not send your message.";
+	$speech = "Error, I could not send your message.3";
 } catch (Exception $e) {
-	$speech = "Error,  I could not send your message.";
+	$speech = "Error,  I could not send your message.4";
 }
 $response = new \stdClass();
 	$response->fulfillmentText = $speech;
@@ -122,7 +122,7 @@ $response = new \stdClass();
 
 else {
 	$response = new \stdClass();
-	$response->fulfillmentText = "Error.";
+	$response->fulfillmentText = "Error.5";
 	echo json_encode($response);
 	
 }
@@ -130,7 +130,7 @@ else {
 else {
 	
 	$response = new \stdClass();
-	$response->fulfillmentText = "Error.";
+	$response->fulfillmentText = "Error.6";
 	echo json_encode($response);
 }
 ?>
