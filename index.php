@@ -82,30 +82,30 @@ elseif (strcmp($action, 'callme') == 0) {
 require("class.phpmailer.php");
 require("class.smtp.php");
 
-$mail = new PHPMailer(true); // the true param means it will throw exceptions on errors, which we need to catch
+$mail3 = new PHPMailer(true); // the true param means it will throw exceptions on errors, which we need to catch
 
-$mail->IsSMTP(); // telling the class to use SMTP
+$mail3->IsSMTP(); // telling the class to use SMTP
 
 try {
   //$mail->Host       = "mail.yourdomain.com"; // SMTP server
-  $mail->SMTPDebug  = 0;                     // disables SMTP debug 
-  $mail->SMTPAuth   = true;                  // enable SMTP authentication
-  $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-  $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
-  $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-  $mail->Username   = "cndchatbot@gmail.com";  // GMAIL username
-  $mail->Password   = "Cnd*123654";            // GMAIL password
+  $mail3->SMTPDebug  = 0;                     // disables SMTP debug 
+  $mail3->SMTPAuth   = true;                  // enable SMTP authentication
+  $mail3->SMTPSecure = "ssl";                 // sets the prefix to the servier
+  $mail3->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+  $mail3->Port       = 465;                   // set the SMTP port for the GMAIL server
+  $mail3->Username   = "rizonn707@gmail.com";  // GMAIL username
+  $mail3->Password   = "hunter96@";            // GMAIL password
 
-  $mail->AddAddress('info@codendot.com');
-  $mail->SetFrom($email, 'Codendot-Chatbot');
+  $mail3->AddAddress('mahdicherham7@gmail.com');
+  $mail3->SetFrom('rizonn707@gmail.com', 'Codendot-Chatbot');
   //$mail->AddReplyTo('name@yourdomain.com', 'Fi Last');
-  $mail->Subject = 'Automated Codendot-Chatbot Email - Call Request';
-  $mail->IsHTML(true);
-  $mail->Body = 'Call request from: ' . $name . '<br>Phone number: ' . $number . '<br>Message: ' . $m ;
+  $mail3->Subject = 'Automated Codendot-Chatbot Email - Call Request';
+  $mail3->IsHTML(true);
+  $mail3->Body = 'Call request from: ' . $name . '<br>Phone number: ' . $number . '<br>Message: ' . $m ;
   //$mail->MsgHTML(file_get_contents('contents.html'));
   //$mail->AddAttachment('images/phpmailer.gif');      // attachment
   //$mail->AddAttachment('images/phpmailer_mini.gif'); // attachment
-  $mail->Send();
+  $mail3->Send();
   $speech = "We will call you as soon as possible on the number that you have provided ".$number.".";
  
 
