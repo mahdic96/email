@@ -2,6 +2,8 @@
 
 $method = $_SERVER['REQUEST_METHOD'];
 if($method == 'POST'){
+	
+	
 $requestBody = File_get_contents("php://input");
 $json = json_decode($requestBody);
 $action = $json->queryResult->action;
@@ -48,8 +50,8 @@ try {
   $mail2->SMTPSecure = "ssl";                 // sets the prefix to the servier
   $mail2->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
   $mail2->Port       = 465;                   // set the SMTP port for the GMAIL server
-  $mail2->Username   = "cndchatbot@gmail.com";  // GMAIL username
-  $mail2->Password   = "Cnd*123654";            // GMAIL password
+  $mail2->Username   = "rizonn707@gmail.com";  // GMAIL username
+  $mail2->Password   = "hunter96@";            // GMAIL password
 
   $mail2->AddAddress($email);
   $mail2->SetFrom('cndchatbot@gmail.com', 'Codendot-Chatbot');
@@ -68,15 +70,10 @@ try {
 } catch (Exception $e) {
 	$speech = "Error,  I could not send your message.";
 }
-
-else {
-	$speech = "Error, I could not send your message.";
-}
-	$response = new \stdClass();
+$response = new \stdClass();
 	$response->fulfillmentText = $speech;
 	echo json_encode($response);
 }
-
 elseif (strcmp($action, 'callme') == 0) {
 	$number = $json->queryResult->parameters->phoneNumber;
 	$m = $json->queryResult->parameters->services;
@@ -118,20 +115,22 @@ try {
 } catch (Exception $e) {
 	$speech = "Error,  I could not send your message.";
 }
-
-else {
-	$speech = "Error, I could not send your message.";
-}
-	$response = new \stdClass();
+$response = new \stdClass();
 	$response->fulfillmentText = $speech;
 	echo json_encode($response);
 }
+
 else {
 	$response = new \stdClass();
 	$response->fulfillmentText = "Error.";
 	echo json_encode($response);
-}
 	
 }
-
+}
+else {
+	
+	$response = new \stdClass();
+	$response->fulfillmentText = "Error.";
+	echo json_encode($response);
+}
 ?>
