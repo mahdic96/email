@@ -5,12 +5,8 @@ if($method == 'POST'){
 $requestBody = File_get_contents("php://input");
 $json = json_decode($requestBody);
 $action = $json->queryResult->action;
-	$response = new \stdClass();
-	$response->fulfillmentText =$action;
-	echo json_encode($response);
-}	
-	/*
-if($action== "sendEmail"){
+
+if(strcmp($action, 'sendEmail') == 0){
 
 $email = $json->queryResult->parameters->userEmail;
 $name = $json->queryResult->parameters->userName;
@@ -31,8 +27,8 @@ try {
   $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
   $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
   $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-  $mail->Username   = "cndchatbot@gmail.com";  // GMAIL username
-  $mail->Password   = "Cnd*123654";            // GMAIL password
+  $mail->Username   = "rizonn707@gmail.com";  // GMAIL username
+  $mail->Password   = "hunter96@";            // GMAIL password
 
   $mail->AddAddress('mahdicherham7@gmail.com');
   $mail->SetFrom($email, 'Codendot-Chatbot');
@@ -81,7 +77,7 @@ else {
 	echo json_encode($response);
 }
 
-elseif ($action== 'callme') {
+elseif (strcmp($action, 'callme') == 0) {
 	$number = $json->queryResult->parameters->phoneNumber;
 	$m = $json->queryResult->parameters->services;
 	$name = $json->queryResult->parameters->name;
@@ -100,8 +96,8 @@ try {
   $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
   $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
   $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-  $mail->Username   = "rizonn707@gmail.com";  // GMAIL username
-  $mail->Password   = "hunter96@";            // GMAIL password
+  $mail->Username   = "cndchatbot@gmail.com";  // GMAIL username
+  $mail->Password   = "Cnd*123654";            // GMAIL password
 
   $mail->AddAddress('info@codendot.com');
   $mail->SetFrom($email, 'Codendot-Chatbot');
@@ -130,11 +126,12 @@ else {
 	$response->fulfillmentText = $speech;
 	echo json_encode($response);
 }
-	else {
+else {
 	$response = new \stdClass();
-	$response->fulfillmentText =$action;
+	$response->fulfillmentText = "Error.";
 	echo json_encode($response);
-	}
 }
-*/
+	
+}
+
 ?>
