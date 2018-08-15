@@ -7,7 +7,41 @@ if($method == 'POST'){
 $requestBody = File_get_contents("php://input");
 $json = json_decode($requestBody);
 $action = $json->queryResult->action;
+$textuser = $json->queryResult->queryText;
+$textbot = $json->queryResult->fulfillmentText;
+	
+$servername = "den1.mysql6.gear.host";
+$username = "testing27";
+$password = "hunter96@";
+$dbname = "testing27";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+// sql to create table
+$sql = "CREATE OR REPLACE TABLE Log (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+sender VARCHAR(30) NOT NULL,
+message TEXT NOT NULL
+);";
+
+
+if ($conn->query($sql) === TRUE) {	
+} else {
+}
+$sql = "INSERT INTO Log (sender,message)
+VALUES ('user',".$textuser.");";
+if ($conn->query($sql) === TRUE) {
+}  
+	$sql = "INSERT INTO Log (sender,message)
+VALUES ('bot',".$textbot.");";
+if ($conn->query($sql) === TRUE) {
+}  
+	$conn->close();
 if(strcmp($action, 'sendEmail') == 0){
 
 $email = $json->queryResult->parameters->userEmail;
@@ -126,6 +160,7 @@ else {
 	echo json_encode($response);
 	
 }
+	
 }
 else {
 	
