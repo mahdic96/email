@@ -12,7 +12,7 @@ $textbot = $json->queryResult->fulfillmentText;
 	
 $servername = "den1.mysql6.gear.host";
 $username = "testing27";
-$password = "hunter96@";
+$password = "Gs69?B-sv5Ma";
 $dbname = "testing27";
 
 // Create connection
